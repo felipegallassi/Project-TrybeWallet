@@ -7,7 +7,7 @@ const Header = ({ email, expenses, currency }) => (
     <p data-testid="email-field">{email}</p>
     <p>
       <p data-testid="total-field">
-        { expenses }
+        {expenses.reduce((acc, item) => acc + item, 0)}
       </p>
       {' '}
       <p data-testid="header-currency-field">
@@ -19,7 +19,7 @@ const Header = ({ email, expenses, currency }) => (
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  expenses: PropTypes.number.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.number).isRequired,
   currency: PropTypes.string.isRequired,
 };
 

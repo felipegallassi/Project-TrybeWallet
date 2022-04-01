@@ -1,12 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import { fetchMoedas } from '../actions';
+import Loading from '../components/Loading';
+import Form from '../components/Form';
 
 class Wallet extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchMoedas());
+  }
+
   render() {
+    const { isLoading } = this.props;
     return (
-      <Header />
+      <section>
+        <Header />
+        {isLoading ? <Loading /> : <Form />}
+      </section>
     );
   }
 }
 
-export default Wallet;
+const mapStateToProps = (state) => ({
+  isLoading: state.wallet.Loading,
+});
+
+Wallet.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps)(Wallet);
