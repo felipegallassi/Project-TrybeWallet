@@ -1,6 +1,7 @@
 export const USER_LOGIN = 'USER_LOGIN';
 export const LOADING_TRUE = 'LOADING_TRUE';
 export const RESPONSE = 'RESPONSE';
+export const GET_EXPENSES = 'GET_EXPENSES';
 
 export const userLogin = (email) => ({
   type: USER_LOGIN,
@@ -17,3 +18,8 @@ export const fetchMoedas = () => (
     dispatch({ type: RESPONSE,
       payload: currencies });
   });
+
+export const getExpense = (expense) => ({
+  type: GET_EXPENSES,
+  expense,
+});

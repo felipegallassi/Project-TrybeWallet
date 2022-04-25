@@ -1,4 +1,4 @@
-import { LOADING_TRUE, RESPONSE } from '../actions';
+import { LOADING_TRUE, RESPONSE, GET_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
   currency: 'BRL',
@@ -19,6 +19,11 @@ function walletReducer(state = INITIAL_STATE, action) {
       ...state,
       currencies: action.payload,
       Loading: false,
+    };
+  case GET_EXPENSES:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.expense],
     };
   default:
     return state;

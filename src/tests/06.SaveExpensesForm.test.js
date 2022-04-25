@@ -23,7 +23,7 @@ const mockedExchange = jest.spyOn(global, 'fetch').mockImplementation(() => apiR
 afterEach(() => jest.clearAllMocks());
 
 describe('6 - Salve todas as informações do formulário no estado global', () => {
-  test('Um botão com o texto \'Adicionar despesa\' que salva as informações da despesa no estado global e atualiza a soma de despesas no header', async () => {
+  test.only('Um botão com o texto \'Adicionar despesa\' que salva as informações da despesa no estado global e atualiza a soma de despesas no header', async () => {
     const { store } = renderWithRouterAndStore(<Wallet />, '/carteira');
 
     const currencyInput = await screen.findByRole('combobox', {

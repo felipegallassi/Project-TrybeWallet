@@ -1,26 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import Proptypes from 'prop-types';
 
-const Header = ({ email, expenses, currency }) => (
-  <header>
-    <p data-testid="email-field">{email}</p>
-    <p>
-      <p data-testid="total-field">
-        {expenses.reduce((acc, item) => acc + item, 0)}
-      </p>
-      {' '}
-      <p data-testid="header-currency-field">
-        {currency}
-      </p>
-    </p>
-  </header>
-);
+const Header = ({ email, expenses, currency }) => {
+  const somaTotal = expenses.length <= 0 ? 0 : expenses
+    .map((exp) => exp.exchangeRates[exp.currency].ask * exp.value)
+    .reduce((a, b) => a + b).toFixed(2);
+  return (
+    <header>
+      <p data-testid="email-field">{email}</p>
+      <div>
+        <p data-testid="total-field">
+          {somaTotal}
+        </p>
+        {' '}
+        <p data-testid="header-currency-field">
+          {currency}
+        </p>
+      </div>
+    </header>
+  );
+};
 
 Header.propTypes = {
-  email: PropTypes.string.isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.number).isRequired,
-  currency: PropTypes.string.isRequired,
+  email: Proptypes.string.isRequired,
+  expenses: Proptypes.arrayOf(Proptypes.string).isRequired,
+  currency: Proptypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
