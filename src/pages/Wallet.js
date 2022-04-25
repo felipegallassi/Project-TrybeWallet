@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { fetchMoedas } from '../actions';
 import Loading from '../components/Loading';
 import Form from '../components/Form';
+import Table from '../components/Table';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class Wallet extends React.Component {
     return (
       <section>
         <Header />
-        {isLoading ? <Loading /> : <Form />}
+        {isLoading ? <Loading />
+          : <Form />}
+        <Table />
       </section>
     );
   }
