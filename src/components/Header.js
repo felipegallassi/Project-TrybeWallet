@@ -5,7 +5,7 @@ import Proptypes from 'prop-types';
 const Header = ({ email, expenses, currency }) => {
   const somaTotal = expenses.length <= 0 ? 0 : expenses
     .map((exp) => exp.exchangeRates[exp.currency].ask * exp.value)
-    .reduce((a, b) => a + b).toFixed(2);
+    .reduce((a, b) => a + b, 0).toFixed(2);
   return (
     <header>
       <p data-testid="email-field">{email}</p>

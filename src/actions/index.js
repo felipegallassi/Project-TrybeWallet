@@ -2,6 +2,7 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const LOADING_TRUE = 'LOADING_TRUE';
 export const RESPONSE = 'RESPONSE';
 export const GET_EXPENSES = 'GET_EXPENSES';
+export const REMOVE_EXPENSES = 'REMOVE_EXPENSES';
 
 export const userLogin = (email) => ({
   type: USER_LOGIN,
@@ -22,4 +23,9 @@ export const fetchMoedas = () => (
 export const getExpense = (expense) => ({
   type: GET_EXPENSES,
   expense,
+});
+
+export const removeExpenses = (state) => ({
+  type: REMOVE_EXPENSES,
+  state,
 });
